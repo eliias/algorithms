@@ -18,4 +18,11 @@ describe( 'sorting algorithms', function() {
         } );
     } );
 
+    describe( 'merge sort', function() {
+        it( 'should sort A[1..n]', function() {
+            var a = [5, 2, 4, 7, 1, 3, 2, 6];
+            sort.mergeSort( a, 0, a.length ).should.eql( [1, 2, 2, 3, 4, 5, 6, 7] );
+        } );
+    } );
+
 } );
