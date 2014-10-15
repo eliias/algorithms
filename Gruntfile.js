@@ -32,7 +32,7 @@ module.exports = function( grunt ) {
             test: {
                 options: {
                     require: 'should',
-                    reporter: 'dot',
+                    reporter: 'spec',
                     ui: 'bdd'
                 },
                 src: ['./test/**/*.js']
