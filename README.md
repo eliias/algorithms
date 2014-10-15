@@ -1,4 +1,4 @@
-algoritms
-=========
+algorithms
+---
 
-I am learning algoritms.
+I am learning algorithms.
