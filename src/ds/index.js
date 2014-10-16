@@ -2,5 +2,6 @@
 
 module.exports = {
     LinkedList: require( './linked-list' ),
-    Stack: require( './stack' )
+    Stack: require( './stack' ),
+    Queue: require( './queue' )
 };

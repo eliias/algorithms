@@ -50,4 +50,21 @@ describe( 'data structures', function() {
         } );
     } );
 
+    describe( 'queue', function() {
+
+        it( 'enqueue', function() {
+            var q = new ds.Queue();
+            q.enqueue( 1 );
+            q.dequeue().should.eql( 1 );
+        } );
+
+        it( 'dequeue', function() {
+            var q = new ds.Queue();
+            q.enqueue( 1 );
+            q.enqueue( 2 );
+            q.dequeue().should.eql( 1 );
+            q.dequeue().should.eql( 2 );
+        } );
+    } );
+
 } );
