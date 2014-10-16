@@ -30,4 +30,24 @@ describe( 'data structures', function() {
         } );
     } );
 
+    describe( 'stack', function() {
+        it( 'empty', function() {
+            var s = new ds.Stack();
+            s.empty().should.eql( true );
+        } );
+
+        it( 'push', function() {
+            var s = new ds.Stack();
+            s.push( 1 );
+            s.empty().should.not.eql( true );
+        } );
+
+        it( 'pop', function() {
+            var s = new ds.Stack();
+            s.push( 1 );
+            s.pop().should.eql( 1 );
+            s.empty().should.eql( true );
+        } );
+    } );
+
 } );
