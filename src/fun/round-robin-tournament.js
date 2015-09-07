@@ -1,7 +1,7 @@
 'use strict';
 
 function *pairs(a) {
-    a = [].concat(a) // copy to avoid side-effects
+    a = [].concat(a); // copy to avoid side-effects
     const n = a.length;
 
     for(let z = 0; z < n - 1; z += 1) {

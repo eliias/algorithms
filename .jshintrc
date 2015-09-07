@@ -1,6 +1,6 @@
 {
     "bitwise": true,
-    "curly": true,
+    "curly": false,
     "eqeqeq": true,
     "forin": false,
     "immed": true,
@@ -15,6 +15,7 @@
     "devel": false,
     "node": true,
     "white": true,
+    "esnext": true,
     "predef": [
         "describe",
         "it",
