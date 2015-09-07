@@ -1,6 +1,14 @@
+sudo: false
 language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
 node_js:
-  - "0.10.32"
-before_install: npm install -g grunt-cli
-install: npm install
-before_script: grunt
+  - iojs-v3
+before_script:
+  - npm prune
+  - npm install -g grunt-cli
+script: grunt
+
