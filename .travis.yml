@@ -9,6 +9,4 @@ node_js:
   - iojs-v3
 before_script:
   - npm prune
-  - npm install -g grunt-cli
-script: grunt
-
+script: npm run build

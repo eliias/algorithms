@@ -6,18 +6,20 @@
   "directories": {
     "test": "test"
   },
+  "scripts": {
+    "build": "grunt",
+    "test": "mocha"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-mocha-test": "^0.12.1",
     "load-grunt-tasks": "^0.6.0",
     "mocha": "^1.21.5",
     "should": "^7.1.0",
     "time-grunt": "^1.0.0"
-  },
-  "scripts": {
-    "test": "mocha"
   },
   "repository": {
     "type": "git",
