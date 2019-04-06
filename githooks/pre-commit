@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+./scripts/fmt
+./scripts/lint
+./scripts/test
