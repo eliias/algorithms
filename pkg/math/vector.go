@@ -1,17 +1,33 @@
+// Package math implements a basic library for linear algebra
 package math
 
-import "errors"
+import (
+	"math"
+)
 
+// Vector is an alias of type []float64
 type Vector []float64
 
-func (a Vector) Dot(b Vector) (v float64, err error) {
+// NullVector of given size
+func NullVector(size int) Vector {
+	return make(Vector, size, size)
+}
+
+func (a Vector) Dot(b Vector) (v float64) {
 	if len(a) != len(b) {
-		err = errors.New("vector: unequal length")
-		return
+		panic("vector: unequal length")
 	}
-	v = 0
+
 	for index := 0; index < len(a); index++ {
 		v += a[index] * b[index]
 	}
 	return
+}
+
+func (a Vector) Length() float64 {
+	return math.Sqrt(a.Dot(a))
+}
+
+func (a Vector) Cosine(b Vector) float64 {
+	return a.Dot(b) / (a.Length() * b.Length())
 }

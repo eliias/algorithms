@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+godoc -http=localhost:6060
