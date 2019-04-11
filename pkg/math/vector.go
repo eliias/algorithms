@@ -21,7 +21,7 @@ func (a Vector) Dot(b Vector) (v float64) {
 	for index := 0; index < len(a); index++ {
 		v += a[index] * b[index]
 	}
-	return
+	return v
 }
 
 func (a Vector) Length() float64 {
