@@ -5,7 +5,7 @@ package ds
 
 import (
 	"fmt"
-	"github.com/eliias/algorithms/pkg/strings"
+	"github.com/eliias/algorithms/pkg/text"
 	str "strings"
 )
 
@@ -26,7 +26,7 @@ type BKTree struct {
 
 func NewBKTree() *BKTree {
 	t := &BKTree{}
-	t.calculateDistance = strings.Levenshtein
+	t.calculateDistance = text.Levenshtein
 	return t
 }
 

@@ -41,7 +41,7 @@
 	Probalistic partial metric spaces
 	https://www.researchgate.net/publication/304188311_Fuzzy_Partial_Metric_Spaces
 */
-package strings
+package text
 
 import (
 	"github.com/eliias/algorithms/pkg/math"

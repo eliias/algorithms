@@ -2,29 +2,25 @@ package main
 
 import (
 	"fmt"
-	"github.com/bxcodec/faker/v3"
-	"github.com/eliias/algorithms/pkg/ds"
-	"math"
+	"github.com/eliias/algorithms/pkg/math"
 	"os"
 )
 
 func main() {
-	count := 100
-	tree := ds.NewBKTree()
-	var values [][]rune
-
-	for i := 0; i < count; i++ {
-		value := []rune(faker.FirstName() + faker.LastName())
-		values = append(values, value)
-		tree.Insert(value)
+	m1 := math.Matrix{
+		{2, 3, 4},
+		{1, 0, 0},
 	}
 
-	fmt.Fprint(os.Stdout, string(values[count/2]))
-	fmt.Fprint(os.Stdout, "\n")
-	fmt.Fprint(os.Stdout, tree.Print())
-	fmt.Fprint(os.Stdout, "\n")
+	m2 := math.Matrix{
+		{0, 1000},
+		{1, 100},
+		{0, 10},
+	}
 
-	results := tree.Search(values[count/2], 1, math.MaxInt64)
-
-	fmt.Fprint(os.Stdout, len(results))
+	fmt.Fprint(os.Stdout, m1.Print())
+	fmt.Fprint(os.Stdout, "\n")
+	fmt.Fprint(os.Stdout, m2.Print())
+	fmt.Fprint(os.Stdout, "\n")
+	fmt.Fprint(os.Stdout, m1.Multiply(m2).Print())
 }

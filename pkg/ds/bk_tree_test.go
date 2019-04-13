@@ -5,7 +5,7 @@ package ds
 
 import (
 	"github.com/bxcodec/faker/v3"
-	"github.com/eliias/algorithms/pkg/strings"
+	"github.com/eliias/algorithms/pkg/text"
 	"github.com/stretchr/testify/assert"
 	"math"
 	"math/rand"
@@ -101,7 +101,7 @@ func BenchmarkBKTree_SearchBruteForce(b *testing.B) {
 		term := nodes[r]
 
 		for i := 0; i < count; i++ {
-			distance := strings.Levenshtein(term, nodes[i])
+			distance := text.Levenshtein(term, nodes[i])
 			if distance <= 1 {
 				break
 			}

@@ -1,4 +1,4 @@
-package strings
+package text
 
 import (
 	"github.com/eliias/algorithms/pkg/math"

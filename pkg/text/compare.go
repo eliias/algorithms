@@ -1,4 +1,4 @@
-package strings
+package text
 
 func LeftMismatch(s1 []rune, first1 int, last1 int, s2 []rune, first2 int, last2 int) (int, int) {
 	for first1 != last1 && first2 != last2 && s1[first1] == s2[first2] {
