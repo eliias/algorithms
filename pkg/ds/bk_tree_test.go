@@ -66,7 +66,7 @@ func BenchmarkBKTree_Insert(b *testing.B) {
 		values = append(values, []rune(faker.FirstName()+faker.LastName()))
 	}
 	b.ResetTimer()
-
+	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		var i int
 		if n > count {
@@ -76,26 +76,26 @@ func BenchmarkBKTree_Insert(b *testing.B) {
 	}
 }
 
-func BenchmarkBKTree_Search1(b *testing.B) {
+func BenchmarkBKTree_Search(b *testing.B) {
 	tree := NewBKTree()
 	var node *Node
 	for i := 0; i < count; i++ {
-		node = tree.Insert([]rune(faker.FirstName()))
+		node = tree.Insert([]rune(faker.FirstName() + faker.LastName()))
 	}
 	b.ResetTimer()
-
+	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		tree.Search(node.Value, 1, 1)
+		tree.Search(node.Value, 1, math.MaxInt64)
 	}
 }
 
 func BenchmarkBKTree_SearchBruteForce(b *testing.B) {
 	var nodes [][]rune
 	for i := 0; i < count; i++ {
-		nodes = append(nodes, []rune(faker.FirstName()))
+		nodes = append(nodes, []rune(faker.FirstName()+faker.LastName()))
 	}
 	b.ResetTimer()
-
+	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		r := rand.Intn(count)
 		term := nodes[r]

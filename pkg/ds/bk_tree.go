@@ -63,40 +63,32 @@ func (t *BKTree) insert(node *Node, value []rune) *Node {
 	}
 }
 
-func (t *BKTree) Search(value []rune, distance int, limit int) []*Node {
+func (t *BKTree) Search(value []rune, tolerance int, limit int) []*Node {
 	if limit == 0 {
 		limit = 1
 	}
-	return t.search(t.Root, value, distance, limit)
+	results := []*Node{}
+	return t.search(t.Root, value, tolerance, limit, results)
 }
 
-func (t *BKTree) search(node *Node, value []rune, distance int, limit int) []*Node {
-	var result []*Node
-	var dist int
-
-	if distance == 0 {
-		dist = 0
-	} else {
-		dist = t.calculateDistance(node.Value, value)
+func (t *BKTree) search(node *Node, value []rune, tolerance int, limit int, results []*Node) []*Node {
+	dist := t.calculateDistance(node.Value, value)
+	if dist <= tolerance {
+		results = append(results, node)
 	}
 
-	if dist <= distance {
-		result = append(result, node)
-	}
-
-	if len(result) == limit {
-		return result
-	}
-
-	for i := dist - distance; i < dist+distance; i++ {
+	for i := dist - tolerance; i <= dist+tolerance; i++ {
+		if i < 1 {
+			continue
+		}
 		edge, ok := node.Edges[i]
 
 		if ok {
-			result = append(result, t.search(edge.Node, value, distance, limit)...)
+			results = t.search(edge.Node, value, tolerance, limit, results)
 		}
 	}
 
-	return result
+	return results
 }
 
 func (t *BKTree) Print() string {
@@ -105,8 +97,8 @@ func (t *BKTree) Print() string {
 
 func (t *BKTree) print(s string, node *Node, depth int, w int) string {
 	s += fmt.Sprintf(
-		str.Repeat("│   ", depth)+"├── %v\n",
-		string(node.Value)+fmt.Sprintf(" (%v)", w),
+		str.Repeat("│   ", depth)+"├── (%v) %v\n",
+		w, string(node.Value),
 	)
 
 	for w, edge := range node.Edges {
