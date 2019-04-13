@@ -5,24 +5,6 @@ import (
 	"testing"
 )
 
-func TestMismatch(t *testing.T) {
-	a := []rune("ab")
-	b := []rune("aa")
-
-	s1, s2 := Mismatch(a, 0, len(a)-1, b, 0, len(b)-1)
-	assert.Equal(t, 1, s1, "mismatch index of first string is 1")
-	assert.Equal(t, 1, s2, "mismatch index of first string is 1")
-}
-
-func TestMismatchWithOffset(t *testing.T) {
-	a := []rune("ab")
-	b := []rune("aa")
-
-	s1, s2 := Mismatch(a, 1, len(a)-1, b, 0, len(b)-1)
-	assert.Equal(t, 1, s1, "mismatch index of first string is 1")
-	assert.Equal(t, 0, s2, "mismatch index of first string is 0")
-}
-
 func TestHammingDistanceDifferentShort(t *testing.T) {
 	a := []rune("Hannes")
 	b := []rune("Mooser")
@@ -94,15 +76,6 @@ func TestLevenhsteinIosifovichEditDistanceSameShort(t *testing.T) {
 	//
 	//distance := LevenshteinIosifovich(a, b)
 	//assert.Equal(t, 0, distance, "levenhstein edit distance is 1")
-}
-
-func BenchmarkTestMismatch(b *testing.B) {
-	s1 := []rune("aa")
-	s2 := []rune("ab")
-
-	for n := 0; n < b.N; n++ {
-		Mismatch(s1, 0, len(s1)-1, s2, 0, len(s2)-1)
-	}
 }
 
 func BenchmarkTestLevenhsteinMatrixEditDistanceDifferentShort(b *testing.B) {

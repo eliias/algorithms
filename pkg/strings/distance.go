@@ -50,22 +50,6 @@ import (
 
 const maxEditDistance = 1
 
-func Mismatch(s1 []rune, first1 int, last1 int, s2 []rune, first2 int, last2 int) (int, int) {
-	for first1 != last1 && first2 != last2 && s1[first1] == s2[first2] {
-		first1++
-		first2++
-	}
-	return first1, first2
-}
-
-func ReverseMismatch(s1 []rune, first1 int, last1 int, s2 []rune, first2 int, last2 int) (int, int) {
-	for first1 != last1 && first2 != last2 && s1[first1] == s2[first2] {
-		first1--
-		first2--
-	}
-	return first1, first2
-}
-
 func Hamming(a []rune, b []rune) int {
 	if len(a) != len(b) {
 		panic("strings are of different lenght")
@@ -191,7 +175,7 @@ func Levenshtein(a []rune, b []rune) int {
 
 func LevenshteinIosifovich(subject []rune, query []rune) int {
 	// Skip any common prefix.
-	subjectBegin, queryBegin := Mismatch(subject, 0, len(subject)-1, query, 0, len(query)-1)
+	subjectBegin, queryBegin := LeftMismatch(subject, 0, len(subject)-1, query, 0, len(query)-1)
 	startOffset := subjectBegin - 0
 
 	// If one of the strings is subject prefix of the other, done.
@@ -202,7 +186,7 @@ func LevenshteinIosifovich(subject []rune, query []rune) int {
 	}
 
 	// Skip any common suffix.
-	subjectEnd, _ := Mismatch(subject, subjectBegin-1, len(subject)-1, query, queryBegin-1, len(query)-1)
+	subjectEnd, _ := LeftMismatch(subject, subjectBegin-1, len(subject)-1, query, queryBegin-1, len(query)-1)
 	endOffset := math.Minimum(len(subject)-1-subjectEnd, len(subject)-startOffset)
 
 	// Take the different part.
