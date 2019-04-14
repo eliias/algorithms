@@ -13,12 +13,13 @@ type Matrix []Row
 
 // Add builds sum of two matrices
 func (m Matrix) Add(m2 Matrix) Matrix {
-	if m.N() != m2.N() || m.M() != m2.M() {
+	if m.M() != m2.M() || m.N() != m2.N() {
 		panic("matrix size does not match")
 	}
 
 	result := make(Matrix, m.M())
 	for row, r := range m {
+		result[row] = make(Row, m.N())
 		for col := range r {
 			result[row][col] = m[row][col] + m2[row][col]
 		}
@@ -32,6 +33,7 @@ func (m Matrix) ScalarMultiply(v float64) Matrix {
 	result := make(Matrix, m.M())
 
 	for row, r := range m {
+		result[row] = make(Row, m.N())
 		for col := range r {
 			result[row][col] = m[row][col] * v
 		}
