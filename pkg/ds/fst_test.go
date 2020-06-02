@@ -1,4 +1,4 @@
-package fst
+package ds
 
 import (
 	"fmt"
