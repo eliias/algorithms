@@ -124,7 +124,7 @@ func BenchmarkBTree_Search(b *testing.B) {
 				rand.Seed(42)
 
 				for i := 0; i < b.N; i++ {
-					t.Search(set[rand.Intn(len - 1)])
+					t.Search(set[rand.Intn(len-1)])
 				}
 			})
 		}

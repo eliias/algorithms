@@ -90,7 +90,7 @@ func (n *BTreeNode) Search(k int) *BTreeNode {
 		return n
 	}
 
-	if n.Leaf == true {
+	if n.Leaf {
 		return nil
 	}
 
@@ -104,7 +104,7 @@ func (n *BTreeNode) Traverse() {
 	for i = 0; i < n.N; i++ {
 		// If this is not leaf, then before printing key[i],
 		// traverse the subtree rooted with child C[i].
-		if n.Leaf == false {
+		if !n.Leaf {
 			n.Children[i].Traverse()
 		}
 
@@ -112,7 +112,7 @@ func (n *BTreeNode) Traverse() {
 	}
 
 	// Print the subtree rooted with last child
-	if n.Leaf == false {
+	if !n.Leaf {
 		n.Children[i].Traverse()
 	}
 }
@@ -129,7 +129,7 @@ func (n *BTreeNode) splitChild(i int, c *BTreeNode) {
 	}
 
 	// Copy the last t children of y to z
-	if c.Leaf == false {
+	if !c.Leaf {
 		for j := 0; j < n.T; j++ {
 			z.Children[j] = c.Children[j+n.T]
 		}
@@ -157,13 +157,13 @@ func (n *BTreeNode) splitChild(i int, c *BTreeNode) {
 	n.Keys[i] = c.Keys[n.T-1]
 
 	// Increment count of keys in this node
-	n.N = n.N + 1
+	n.N++
 }
 
 func (n *BTreeNode) insertNonFull(k int) {
 	i := n.N - 1
 
-	if n.Leaf == true {
+	if n.Leaf {
 		// The following loop does two things
 		// a) Finds the location of new key to be inserted
 		// b) Moves all greater keys to one place ahead
@@ -174,7 +174,7 @@ func (n *BTreeNode) insertNonFull(k int) {
 
 		// Insert the new key at found location
 		n.Keys[i+1] = k
-		n.N = n.N + 1
+		n.N++
 		return
 	}
 

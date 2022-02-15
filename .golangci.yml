@@ -1,0 +1,54 @@
+run:
+  tests: true
+  skip-dirs:
+    - githooks
+linters:
+  disable-all: true
+  enable:
+    - bodyclose
+    - deadcode
+    - depguard
+    - dogsled
+    - dupl
+    - errcheck
+    - funlen
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - golint
+    - gomnd
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - interfacer
+    - lll
+    - misspell
+    - nakedret
+    - nolintlint
+    - rowserrcheck
+    - scopelint
+    - staticcheck
+    - structcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - varcheck
+    - whitespace
+    - asciicheck
+    # - exhaustive (TODO: enable after next release; current release at time of writing is v1.27)
+    - gochecknoglobals
+    - gocognit
+    - godot
+    # - godox
+    - goerr113
+    - maligned
+    - nestif
+    - prealloc
+    - wsl

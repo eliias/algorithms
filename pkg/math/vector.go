@@ -10,7 +10,7 @@ type Vector []float64
 
 // NullVector of given size
 func NullVector(size int) Vector {
-	return make(Vector, size, size)
+	return make(Vector, size)
 }
 
 func (a Vector) Dot(b Vector) (v float64) {

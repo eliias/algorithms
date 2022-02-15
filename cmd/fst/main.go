@@ -6,7 +6,7 @@ import (
 
 	"github.com/bradleyjkemp/memviz"
 
-	"github.com/eliias/algorithms/pkg/fst"
+	"github.com/eliias/algorithms/pkg/ds"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 		"tuesday",
 	}
 
-	ds := fst.NewFST()
+	ds := ds.NewFST()
 	for value, word := range dict {
 		ds.Add(word, value)
 	}
